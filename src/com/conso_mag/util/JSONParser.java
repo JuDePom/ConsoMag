@@ -48,20 +48,19 @@ public class JSONParser {
 	
 	
 	public static ArrayList<Article> parseListArticle(String json){
+		ArrayList<Article> lart = new ArrayList<Article>();
 		try {
-			
-			ArrayList<Article> lart = new ArrayList<Article>();
 			
 			JSONArray listArticle = new JSONArray(new JSONObject(json).getString(TAG_ARTICLE));
 			for(int i = 0; i < listArticle.length(); i++){
-				lart.add( parseArticle(listArticle.getString(i)) );
+				Article art = parseArticle(listArticle.getString(i));
+				if (art != null) lart.add( art );
 			}
 			
-			return lart;
 		} catch (JSONException e) {
 			Log.e("parseListArticle", e.toString());
 		}
-		return null;
+		return lart;
 	}
 	
 	
@@ -104,8 +103,6 @@ public class JSONParser {
 				}
 			}
 			art.setImage( unescapeJava(imageurl) );
-			
-			System.out.println("Image : " + unescapeJava(imageurl));
 
 			art.setAuthor( parseAuthor(article.getString(TAG_AUTHOR)));
 			
