@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <WebView
+        android:id="@+id/article_detail"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:padding="16dp"
+        android:textIsSelectable="true"
+        tools:context="com.conso_mag.ArticleDetailFragment" />
+
+    <ProgressBar
+        android:id="@+id/article_progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/article_detail"
+        android:layout_alignStart="@+id/article_detail"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/article_detail"
+        android:layout_alignEnd="@+id/article_detail" />
+
+</RelativeLayout>

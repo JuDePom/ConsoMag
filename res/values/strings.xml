@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Pub -->
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+
+    <!-- Strings -->
+    <string name="app_name">Conso-Mag</string>
+    <string name="about">A propos</string>
+    <string name="search">Article à rechercher</string>
+    <string name="loading">Chargement</string>
+
+    <!-- Categories -->
+    <string-array name="categories">
+        <item>Accueil</item>
+        <item>Cinéma</item>
+        <item>Conso</item>
+        <item>Culture</item>
+        <item>Jeux</item>
+        <item>Poker</item>
+        <item>Sport</item>
+        <item>Tech</item>
+        <item>Web</item>
+    </string-array>
+
+    <array name="categories_icons">
+        <item>@drawable/ic_accueil</item>
+        <item>@drawable/ic_cinema</item>
+        <item>@drawable/ic_conso</item>
+        <item>@drawable/ic_culture</item>
+        <item>@drawable/ic_jeux</item>
+        <item>@drawable/ic_poker</item>
+        <item>@drawable/ic_sport</item>
+        <item>@drawable/ic_tech</item>
+        <item>@drawable/ic_web</item>
+    </array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Categorie Icon</string>
+
+</resources>

@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light"></style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="colorControlNormal">#FF5722</item>
+        <item name="colorControlActivated">#FF5722</item>
+        <item name="colorControlHighlight">#FF5722</item>
+    </style>
+
+</resources>

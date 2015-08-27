@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="navigation_text">#E0E0E0</color>
+    <color name="navigation_text_hint">#C3C3C3</color>
+    <color name="navigation_background">#424242</color>
+    <color name="navigation_background_selected">#FF5722</color>
+
+</resources>
