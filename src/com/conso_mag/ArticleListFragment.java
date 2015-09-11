@@ -14,6 +14,8 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
@@ -28,9 +30,10 @@ import android.widget.ListView;
  * Activities containing this fragment MUST implement the {@link Callbacks}
  * interface.
  */
-public class ArticleListFragment extends ListFragment implements JSONUser {
+public class ArticleListFragment extends ListFragment implements JSONUser, OnScrollListener {
 
 	int numCateg = 0;
+	int lastArticle = -1;
 	JSONLoader jloader;
 	ArrayList<Article> la;
 	ListView lv1;
@@ -147,6 +150,20 @@ public class ArticleListFragment extends ListFragment implements JSONUser {
 
 		mActivatedPosition = position;
 	}
+	
+	@Override
+	public void onScrollStateChanged(AbsListView view, int scrollState) {
+	}
+	
+	@Override
+	public void onScroll(AbsListView lw, final int firstVisibleItem,
+	                 final int visibleItemCount, final int totalItemCount) {
+		if ( lw.getLastVisiblePosition() == lastArticle-1){
+			jloader = new JSONLoader(jloader, lastArticle+1, 5);
+			jloader.execute("");
+			lastArticle += 5;
+		}
+	}
 
 	public void getData(){
 		if(jloader != null) jloader.stop();
@@ -164,6 +181,7 @@ public class ArticleListFragment extends ListFragment implements JSONUser {
 					((ArticleListActivity)getActivity()).openArticle(art);
 				}
 			});
+			lv1.setOnScrollListener(this);
 		}
 
 		switch(numCateg){
@@ -194,6 +212,8 @@ public class ArticleListFragment extends ListFragment implements JSONUser {
 		default:
 			jloader = new JSONLoader(this, "http://www.conso-mag.com/?json=get_recent_posts&status=publish");
 		}
+		
+		lastArticle = 15;
 
 		if ( jloader != null)
 			jloader.execute("");

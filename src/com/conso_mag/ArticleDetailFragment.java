@@ -2,7 +2,7 @@ package com.conso_mag;
 
 import com.conso_mag.model.Article;
 import com.google.gson.Gson;
-
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -45,6 +45,7 @@ public class ArticleDetailFragment extends Fragment {
 		}
 	}
 
+	@SuppressLint("SetJavaScriptEnabled")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
@@ -103,7 +104,16 @@ public class ArticleDetailFragment extends Fragment {
 
 					+ "<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js'></script>";
 
-			String js = "<script type='text/javascript' src='http://www.conso-mag.com/wp-content/themes/valenti/library/js/cb-scripts.js?ver=3.0'></script>";
+			String js = "<script type=\"text/javascript\" src=\"http://www.conso-mag.com/wp-content/themes/valenti/library/js/cb-scripts.js?ver=3.0\"></script>"
+					+ "<script type='text/javascript' src='http://www.conso-mag.com/wp-content/themes/valenti/library/js/cookie.min.js?ver=4.2.4'></script>"
+					+ "<script type='text/javascript' src='http://www.conso-mag.com/wp-content/themes/valenti/library/js/jquery.ext.js?ver=4.2.4'></script>"
+					+ "<script type='text/javascript' src='http://www.conso-mag.com/wp-content/themes/valenti/library/js/jquery.flexslider-min.js?ver=4.2.4'></script>"
+					+ "<script type='text/javascript' src='http://www.conso-mag.com/wp-content/themes/valenti/library/js/jquery.fs.boxer.min.js?ver=4.2.4'></script>"
+					+ "<script type='text/javascript' src='http://www.conso-mag.com/wp-content/themes/valenti/library/js/selectivizr-min.js?ver=4.2.4'></script>"
+					+ "<script type=\"text/javascript\">"
+					+ "var jetpackSlideshowSettings = {\"spinner\":\"http://www.conso-mag.com/wp-content/plugins/jetpack/modules/shortcodes/img/slideshow-loader.gif\"};"
+					+ "</script>"
+					+ "<script type=\"text/javascript\" src=\"http://www.conso-mag.com/wp-content/plugins/jetpack/modules/shortcodes/js/slideshow-shortcode.js?ver=20121214.1\"></script>";
 
 			String data = ""
 					+ "<!DOCTYPE html>"
@@ -119,7 +129,7 @@ public class ArticleDetailFragment extends Fragment {
 			WebSettings settings = web.getSettings();
 			settings.setJavaScriptEnabled(true);
 			settings.setDefaultTextEncodingName("utf-8");
-			settings.setPluginState(WebSettings.PluginState.ON);
+			//settings.setPluginState(WebSettings.PluginState.ON);
 			settings.setLoadWithOverviewMode(true);
 			web.setWebChromeClient(new MyWebViewClient());
 			web.loadDataWithBaseURL(null, data, "text/html", "UTF-8", null);

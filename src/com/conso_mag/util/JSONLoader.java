@@ -23,12 +23,23 @@ public class JSONLoader extends AsyncTask<String, String, Void> implements Seria
 	transient String json, url;
 	transient Fragment fragment;
 	transient boolean run = true;
+	transient int start, number;
 
 	public JSONLoader(Fragment frag, String url) {
 		/*progressDialog = new ProgressDialog(frag.getActivity());*/
 		this.url = url;
-		json = "";
-		fragment = frag;
+		this.json = "";
+		this.fragment = frag;
+		this.start = 1;
+		this.number = 15;
+	}
+	
+	public JSONLoader(JSONLoader jloader, int start, int number){
+		this.url = jloader.url;
+		this.json = "";
+		this.fragment = jloader.fragment;
+		this.start = start;
+		this.number = number;
 	}
 
 	public String getJSON(){
@@ -47,10 +58,10 @@ public class JSONLoader extends AsyncTask<String, String, Void> implements Seria
 
 	@Override
 	protected Void doInBackground(String... params) {
-		for (int i = 1; i < 15 && run; i++){
+		for (int i = 0; i < number && run; i++){
 
 			try{
-				URL url_con = new URL(url+"&count=1&page="+i);
+				URL url_con = new URL(url+"&count=1&page="+(start+i));
 				HttpURLConnection connection = (HttpURLConnection)url_con.openConnection();
 				connection.setRequestProperty("User-Agent", "");
 				connection.setRequestMethod("POST");
