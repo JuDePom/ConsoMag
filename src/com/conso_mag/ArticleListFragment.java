@@ -45,6 +45,7 @@ public class ArticleListFragment extends ListFragment implements JSONUser, OnScr
 	private static final String STATE_ACTIVATED_POSITION = "activated_position";
 	private static final String STATE_ARTICLE_LIST = "article_list";
 	private static final String STATE_LISTVIEW_ADAPTER = "listview_adapter";
+	private static final String STATE_LAST_ARTICLE = "last_article";
 	private static final String STATE_JLOADER = "jloader";
 
 
@@ -80,6 +81,10 @@ public class ArticleListFragment extends ListFragment implements JSONUser, OnScr
 			if (savedInstanceState.containsKey(STATE_ARTICLE_LIST)){
 				la = (ArrayList<Article>) savedInstanceState.getSerializable(STATE_ARTICLE_LIST);
 				load("");
+			}
+			
+			if (savedInstanceState.containsKey(STATE_LAST_ARTICLE)){
+				lastArticle = savedInstanceState.getInt(STATE_LAST_ARTICLE);
 			}
 
 			if (savedInstanceState.containsKey(STATE_LISTVIEW_ADAPTER)){
@@ -122,6 +127,8 @@ public class ArticleListFragment extends ListFragment implements JSONUser, OnScr
 		if (mActivatedPosition != ListView.INVALID_POSITION) {
 			outState.putInt(STATE_ACTIVATED_POSITION, mActivatedPosition);
 		}
+		
+		outState.putInt(STATE_LAST_ARTICLE, lastArticle);
 
 		ListItemArticleAdapter liaa = (ListItemArticleAdapter) lv1.getAdapter();
 		outState.putSerializable(STATE_LISTVIEW_ADAPTER, liaa);
