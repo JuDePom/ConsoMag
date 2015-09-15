@@ -101,6 +101,7 @@ public class ArticleListFragment extends ListFragment implements JSONUser, OnScr
 						}
 					});
 				}
+				lv1.setOnScrollListener(this);
 			}
 
 			if (savedInstanceState.containsKey(STATE_JLOADER)){
